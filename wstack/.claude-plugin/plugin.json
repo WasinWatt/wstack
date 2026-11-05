@@ -1,0 +1,8 @@
+{
+  "name": "wstack",
+  "displayName": "wstack",
+  "description": "/product and its skills (shape, product-gate, product-blast, product-setup): requirement guardrails on trial",
+  "author": { "name": "WasinWatt", "url": "https://github.com/WasinWatt" },
+  "repository": "https://github.com/WasinWatt/wstack",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,39 @@
+<!-- An issue: a small idea, an epic child, a satellite or a foggy card. Delete a section only where its note says so. -->
+
+## Goal
+
+<who> can now <do X>.
+
+## Why
+
+<The problem, then its evidence: a customer ask, a data point, a linked issue.>
+
+## Impact
+
+<Audience predicate> → <count> (<query or source>)
+<!-- or: unknown · <owner> · <date the owner will answer by> -->
+
+## How
+
+1. <One line per step. Name the entry point (screen, LINE message, command), never a line number.>
+
+## Fact delta
+
+```delta
+<rows, per references/delta-format.md>
+```
+
+## Acceptance
+
+| # | Given / When / Then | Verify |
+| --- | --- | --- |
+| 1 | Given <state>, when <action>, then <result> | <command · screen · query> |
+
+## Out of scope
+
+- <What this won't touch.>
+
+## Open
+
+- <An unverified premise or question> · <owner>
+<!-- Delete this section when it is empty. A foggy card always keeps it, plus the line: Next step: run /grilling on this, then /product <id>. -->

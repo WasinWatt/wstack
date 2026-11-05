@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "wstack",
+  "owner": { "name": "WasinWatt", "url": "https://github.com/WasinWatt" },
+  "description": "Wasin's trial skills, tested here before they move to the Paypers plugins",
+  "plugins": [
+    {
+      "name": "wstack",
+      "source": "./wstack",
+      "description": "/product: requirement guardrails. Duplicate search, outcome sizing, fact delta, blast radius and a gate, before an idea reaches dev"
+    }
+  ]
+}
