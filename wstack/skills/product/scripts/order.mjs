@@ -12,11 +12,27 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const nodeId = (id) => 'n_' + id.replace(/[^A-Za-z0-9]/g, '_');
-// Mermaid labels are quoted; a raw quote or bracket would end them early.
-const label = (s) => String(s).replace(/"/g, '#quot;').replace(/[\r\n]+/g, ' ').trim();
+// Both outputs put each value on one line, so a value never splits a list line.
+const oneLine = (s) => String(s).replace(/\s*[\r\n]+\s*/g, ' ').trim();
+// Mermaid labels are quoted and rendered as HTML: a raw quote would end them
+// early, and a raw angle bracket would be read as a tag.
+const label = (s) => oneLine(s).replace(/"/g, '#quot;').replace(/</g, '#lt;').replace(/>/g, '#gt;');
+
+/** Returns the reason the input cannot be drawn, or null when its shape is fine. */
+function shapeError(input) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) return 'input is not an object';
+  if (!Array.isArray(input.children)) return 'children is not a list';
+  for (const c of input.children) {
+    if (c && c.blockedBy !== undefined && !Array.isArray(c.blockedBy)) return `${c.id}: blockedBy is not a list`;
+    if (c && (c.blockedBy ?? []).some((b) => !b || typeof b !== 'object')) return `${c.id}: a blockedBy entry is not an object`;
+  }
+  return null;
+}
 
 /** Returns { waves: string[][], errors: string[] }. waves[0] needs nothing. */
 export function computeWaves(children) {
+  const shape = shapeError({ children });
+  if (shape) return { waves: [], errors: [shape] };
   const errors = [];
   const byId = new Map();
   for (const c of children) {
@@ -61,7 +77,10 @@ function waveTitle(i, size) {
 }
 
 /** Returns { mermaid, list, errors }. */
-export function renderOrder({ children = [], done } = {}) {
+export function renderOrder(input) {
+  const shape = shapeError(input);
+  if (shape) return { mermaid: '', list: '', errors: [shape] };
+  const { children, done } = input;
   const { waves, errors } = computeWaves(children);
   if (errors.length) return { mermaid: '', list: '', errors };
   const byId = new Map(children.map((c) => [c.id, c]));
@@ -88,12 +107,12 @@ export function renderOrder({ children = [], done } = {}) {
   }
   const list = waves.map((ids, i) => {
     const cards = ids.map((id) => {
-      const needs = (byId.get(id).blockedBy ?? []).map((b) => `${String(b.needs).trim()} from ${b.id}`);
+      const needs = (byId.get(id).blockedBy ?? []).map((b) => `${oneLine(b.needs)} from ${b.id}`);
       return needs.length ? `${id} (needs ${needs.join(', ')})` : id;
     });
     return `${waveTitle(i, ids.length)}: ${cards.join(', ')}`;
   });
-  if (done) list.push(`${waves.length + 1} · Done when: ${String(done).trim()}`);
+  if (done) list.push(`${waves.length + 1} · Done when: ${oneLine(done)}`);
   return { mermaid: out.join('\n'), list: list.join('\n'), errors: [] };
 }
 

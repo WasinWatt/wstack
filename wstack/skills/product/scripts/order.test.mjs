@@ -81,6 +81,33 @@ describe('renderOrder', () => {
     assert.match(r.mermaid, /say #quot;hi#quot;/);
     assert.doesNotMatch(r.mermaid, /done/);
   });
+
+  it('escapes angle brackets, so a label is never read as a tag', () => {
+    const r = renderOrder({
+      children: [{ id: 'A', title: 'List<Item>' }, { id: 'B', blockedBy: [{ id: 'A', needs: '<Card> schema' }] }],
+      done: 'a > b',
+    });
+    assert.match(r.mermaid, /List#lt;Item#gt;/);
+    assert.match(r.mermaid, /\|"#lt;Card#gt; schema"\|/);
+    assert.match(r.mermaid, /done\["a #gt; b"\]/);
+  });
+
+  it('keeps each value on one line in both outputs', () => {
+    const r = renderOrder({
+      children: [{ id: 'A' }, { id: 'B', blockedBy: [{ id: 'A', needs: 'two\n  lines' }] }],
+      done: 'first\nsecond',
+    });
+    assert.match(r.list, /B \(needs two lines from A\)/);
+    assert.match(r.list, /Done when: first second$/);
+    assert.match(r.mermaid, /\|"two lines"\|/);
+  });
+
+  it('reports badly formed input as errors, not a crash', () => {
+    assert.match(renderOrder(null).errors[0], /not an object/);
+    assert.match(renderOrder({ children: {} }).errors[0], /children is not a list/);
+    assert.match(renderOrder({ children: [{ id: 'A', blockedBy: [null] }] }).errors[0], /not an object/);
+    assert.match(renderOrder({ children: [{ id: 'A', blockedBy: 'B' }] }).errors[0], /not a list/);
+  });
 });
 
 describe('cli', () => {
