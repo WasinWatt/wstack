@@ -60,7 +60,7 @@ When no outcome survives the questions, return foggy, with what you know and the
 
 ## Return
 
-- outcomes, in the order they can ship, with what blocks what;
+- outcomes, in the order they can ship, with what blocks what, and for each block the output the later outcome needs from the earlier one (an endpoint, a schema, a generated file). An outcome that needs nothing from another is not blocked by it, even when it ships later;
 - the delta block;
 - one audience predicate per row;
 - premises: each with its citation, or marked unverified with an owner;

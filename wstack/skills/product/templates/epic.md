@@ -24,12 +24,32 @@ Success signal: <one measurable sign the whole epic worked, and where it is meas
 | --- | --- | --- | --- | --- |
 | 1 | <id> | <who> can now <do X> | none | <the child's end-to-end check> |
 
+### Order of work
+
+Each column can run in parallel. An arrow is an output the next card waits on.
+
 ```mermaid
-graph TD
-  A[<id> outcome] --> B[<id> outcome]
+graph LR
+  subgraph w1["1 · Start now, in parallel"]
+    n_A["<b><id></b><br/><outcome>"]
+  end
+  subgraph w2["2 · Then"]
+    n_B["<b><id></b><br/><outcome>"]
+  end
+  subgraph wdone["3 · Done when"]
+    done["<the Epic done when check, one line>"]
+  end
+  n_A -->|"<what B needs from A>"| n_B
+  n_B -.-> done
 ```
 
-<!-- Generated from the children's native blocked-by relations. Never edit by hand. The edge A --> B means A blocks B. Drop the graph when the profile or a test showed Linear does not render it. -->
+```text
+1 · Start now: <id>
+2 · Then: <id> (needs <what> from <id>)
+3 · Done when: <the check>
+```
+
+<!-- Printed by scripts/order.mjs from the children's native blocked-by relations. Never draw it by hand. Drop the graph when the profile or a test showed Linear does not render it. -->
 
 ## Epic done when
 
