@@ -6,7 +6,9 @@ most product ideas reach a dev half-finished. the dev picks up the ticket and fi
 
 **`/product` is my answer.** you type an idea in your own words. it does the legwork a careful PM would, then files a card a dev can start from without coming back to ask.
 
-**it looks things up instead of asking.** it reads the code, your product docs and your data. it asks you at most five questions, and only what you decide: the outcome, who it's for, the trade-offs.
+**it reads what you mean before it writes what you said.** it says back the outcome you want, the problem behind it and the smallest change that would get it. then it routes: a clear idea goes straight to a card. an idea with no stated problem, or with a cheaper way to the same outcome, gets one challenge round: what happened that made this needed, and here are the other ways, pick one. a foggy idea goes to `/grilling` first. it can say "this doesn't earn its place".
+
+**it looks things up instead of asking.** it reads the code, your product docs and your data. it asks you at most five questions, and only what you decide: why, then what, then how.
 
 **every claim gets checked.** before the card lands, a fresh agent reviews it from each angle, citing code or data for every finding. a premise nobody could verify stays marked unverified, with an owner. it never passes silently.
 
@@ -17,6 +19,8 @@ most product ideas reach a dev half-finished. the dev picks up the ticket and fi
 | without it | with `/product` |
 |---|---|
 | the same idea gets filed twice | it searches open issues first. if one matches, the first question is "extend that one instead?" |
+| a card for the wrong thing: nobody asked why, or what else would work | it reads the intent first and challenges once: the problem and its case, then the other ways to the outcome with a recommendation |
+| QA finds the hole ("a note field" with no length limit) | every input, action, state and number a card adds gets its edges, copied from the nearest thing the product already has |
 | the dev comes back with questions | every card has a one-line goal, given / when / then acceptance rows with a way to verify each, and an out-of-scope list |
 | the ticket rests on a wrong premise | the FIT angle checks every "today X happens" against the code and cites the line |
 | "how many users is this?" | one query per change through your database or analytics tools, or "unknown" plus the person who can find out |
@@ -70,8 +74,8 @@ passing an issue id rewrites that rough card in place instead of filing a new on
 when invoked it:
 
 1. **searches for a duplicate** before asking anything.
-2. **routes out bugs.** a defect in something that exists today goes to your bug flow, never into the requirement.
-3. **shapes the idea**: its outcomes, what changes in the product, and who each change affects. at most five questions for the whole run.
+2. **reads the intent and routes.** it says back the outcome, the problem and the smallest change. a bug goes to your bug flow, never into the requirement. something the product already does stops there. a foggy idea is grilled. an idea with no problem behind it, or a cheaper way, gets one challenge round. a clear one goes on.
+3. **shapes the idea**: its outcomes, what changes in the product, who each change affects, and the edges a tester would ask about. at most five questions for the whole run.
 4. **checks the change** against the real files: every line it says will change must exist today, word for word.
 5. **counts who it affects**, one query per change.
 6. **gates the draft** with one agent per angle, then applies their fixes once.
@@ -164,7 +168,7 @@ everything repo-specific lives in `REQUIREMENTS.md`, not in the skills: who your
 
 `/product` points to two skills it doesn't bundle:
 
-- `/grilling`, for deciding whether to do an idea at all. a foggy idea becomes a `needs-info` card whose next step is "run /grilling on this, then /product". it ships in [mattpocock/skills](https://github.com/mattpocock/skills).
+- `/grilling`, for an idea too foggy to state as an outcome. when it is installed, `/product` runs it for you and carries on with what it settled. without it, `/product` asks its own challenge round, and an idea that is still foggy becomes a `needs-info` card whose next step is "run /grilling on this, then /product". it ships in [mattpocock/skills](https://github.com/mattpocock/skills).
 - `pp-dev:fix`, my team's bug flow. it's private, so when `/product` names it, file the bug your usual way.
 
 ## develop

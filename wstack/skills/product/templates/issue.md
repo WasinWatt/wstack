@@ -6,7 +6,8 @@
 
 ## Why
 
-<The problem, then its evidence: a customer ask, a data point, a linked issue.>
+<The problem, then its evidence: the case that made this needed (who, and what they were trying to do), a customer ask, a data point, a linked issue.>
+<!-- When another way to the goal was weighed, one line each: Chosen over: <the other way>, because <reason>. Delete when none was. -->
 
 ## Impact
 
