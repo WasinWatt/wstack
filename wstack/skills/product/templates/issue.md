@@ -6,7 +6,8 @@
 
 ## Why
 
-<The problem, then its evidence: a customer ask, a data point, a linked issue.>
+<The problem, then its evidence: the case that made this needed (who, and what they were trying to do), a customer ask, a data point, a linked issue.>
+<!-- When another way to the goal was weighed, one line each: Chosen over: <the other way>, because <reason>. Delete when none was. -->
 
 ## Impact
 
@@ -36,4 +37,4 @@
 ## Open
 
 - <An unverified premise or question> · <owner>
-<!-- Delete this section when it is empty. A foggy card always keeps it, plus the line: Next step: run /grilling on this, then /product <id>. -->
+<!-- Delete this section when it is empty. A foggy card always keeps it, plus the next-step line from the size table in SKILL.md step 3: grill when this run did not, else the owners answer, then /product <id>. -->

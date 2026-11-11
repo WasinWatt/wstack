@@ -8,7 +8,8 @@ Success signal: <one measurable sign the whole epic worked, and where it is meas
 
 ## Why
 
-<The problem, then its evidence.>
+<The problem, then its evidence: the case that made this needed, a customer ask, a data point.>
+<!-- When another way to the goal was weighed, one line each: Chosen over: <the other way>, because <reason>. Delete when none was. -->
 
 ## Impact
 
