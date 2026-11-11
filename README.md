@@ -166,9 +166,10 @@ everything repo-specific lives in `REQUIREMENTS.md`, not in the skills: who your
 
 ## not shipped here
 
-`/product` points to two skills it doesn't bundle:
+`/product` points to three skills it doesn't bundle:
 
 - `/grilling`, for an idea too foggy to state as an outcome. when it is installed, `/product` runs it for you and carries on with what it settled. without it, `/product` asks its own challenge round, and an idea that is still foggy becomes a `needs-info` card whose next step is "run /grilling on this, then /product". it ships in [mattpocock/skills](https://github.com/mattpocock/skills).
+- `/wayfinder`, for an idea too big for one card, where the way to the outcome is not visible yet. `/product` names it as the next step and stops; you start it. it ships in [mattpocock/skills](https://github.com/mattpocock/skills) too.
 - `pp-dev:fix`, my team's bug flow. it's private, so when `/product` names it, file the bug your usual way.
 
 ## develop
