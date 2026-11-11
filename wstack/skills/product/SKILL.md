@@ -68,7 +68,7 @@ Then take the first route that fits:
 
 The **kinds** of what goes on come from its delta rows (step 3), never from a guess now.
 
-**Grill.** When a skill named `grilling` is listed (its listed name may carry a plugin prefix), run it with the Skill tool on the idea and what you found. Its rounds are its own and do not count against the budget; what it settles is settled (Budget). When no such skill is listed, or the run is headless, use the challenge round instead; an idea with no Outcome after it is a foggy card (step 3).
+**Grill.** When a skill named `grilling` is listed (its listed name may carry a plugin prefix), first tell the person: "This is still foggy, so I'll grill it first, then carry on to the card." Then run it with the Skill tool on the idea and what you found. Its rounds are its own and do not count against the budget; what it settles is settled (Budget). Grilling ends when the person confirms the shared understanding. That confirm is grilling's, not this skill's one confirm (step 6). As soon as it comes, carry on in the same turn: take step 2 again with what grilling settled, and go on through the steps to the cards. Never stop after grilling to wait for another prompt. When no such skill is listed, use the challenge round instead. An idea with no Outcome after either is a foggy card (step 3).
 
 **Challenge round.** At most three questions, counted in the budget, in this order. A question whose options depend on an answer that is still open waits for that answer, as in `/grilling`: when the Why is asked, the What comes in a second round, because the ways to the Outcome depend on the problem.
 
@@ -91,7 +91,7 @@ Size, by outcome count:
 | 1 | small | 1 issue, no children |
 | 2 to `size.epicMax` (default 6) | epic | 1 parent + 1 child per outcome |
 | more, or 2+ epics, or the person names a lead, dates or milestones | project | a Linear project: attach to the one the person names, or create one only with a lead and dates the person gives |
-| none after step 2 and the questions | foggy | 1 issue, label `needs-info`, the open questions, and the next step "run /grilling on this, then /product <id>" |
+| none after step 2 and the questions | foggy | 1 issue, label `needs-info`, the open questions, each with an owner, and the next step: "run /grilling on this, then /product <id>" when this run did not grill; "the owners answer the open questions above, then /product <id>" when it did, since grilling again would ask the same questions |
 
 These never make a separate outcome: layers, rollout steps, design, QA, docs or landing copy, the number of facts, PRs or weeks.
 
