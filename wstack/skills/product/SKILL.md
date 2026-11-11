@@ -4,8 +4,8 @@ description: >
   Turn a raw product idea into a checked requirement in Linear. Reads the
   intent first (the outcome, the problem behind it, the smallest change that
   would get it) and routes on it: a bug to pp-dev:fix, a foggy idea to
-  /grilling, one too big for a card to /wayfinder, an idea with no stated
-  problem or a cheaper way to one challenge round, a clear one straight on. Then searches for a duplicate, sizes the
+  /grilling, an idea with no stated problem or a cheaper way to one challenge
+  round, a clear one straight on. Then searches for a duplicate, sizes the
   idea by outcomes, writes its fact delta, counts who it affects, gates it
   for fit with the product, and lands it in the repo's analysis status. Use
   for /product <idea | PAY-xxx>, "write a requirement", "spec this idea",
@@ -62,7 +62,6 @@ Then take the first route that fits:
 | --- | --- | --- |
 | bug | A part is a defect in behavior that exists today | That part goes to `pp-dev:fix`. Never mix it into the requirement. Say which part, and give the person a bug title and one line on what happens and what should, to file as a Bug and run `/pp-dev:fix <id>` on. The rest takes its own route. |
 | exists | The product already does what is asked | Show the fact line or `file:line` and stop. |
-| map | The idea is bigger than one session can settle: a project whose way to the Outcome is not visible yet, with decisions that each wait on another | Say so, and name the next step: `/wayfinder` on the idea, when a skill of that name is listed. A person starts it; you cannot. It charts the decisions as a map, and each destination it settles comes back as `/product <id>`. No such skill → foggy. |
 | foggy | You cannot write the Outcome line, or the idea is several ideas whose decisions hang off each other | Grill (below), then come back to this step. |
 | challenge | The Outcome is clear, and any of: no problem is stated; the Smallest change is not what was asked; the ask copes with a defect or a gap somewhere else (a manual way to clean up what another part gets wrong); a premise the idea rests on is false or unverified; a count or fact you found says few people would notice | The challenge round (below). |
 | clear | The Outcome, the Problem with its case, and who it is for are stated or found, and you see no cheaper way to the Outcome | Step 3, with no challenge. |
