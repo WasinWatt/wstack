@@ -62,9 +62,9 @@ Then take the first route that fits:
 | --- | --- | --- |
 | bug | A part is a defect in behavior that exists today | That part goes to `pp-dev:fix`. Never mix it into the requirement. Say which part, and give the person a bug title and one line on what happens and what should, to file as a Bug and run `/pp-dev:fix <id>` on. The rest takes its own route. |
 | exists | The product already does what is asked | Show the fact line or `file:line` and stop. |
-| foggy | You cannot write the Outcome line, or the idea is several ideas whose decisions hang off each other | Grill (below), then come back to this step. |
+| foggy | You cannot write the Outcome line, or what to build depends on decisions nobody has made yet. Size plays no part: a big idea whose outcomes are clear is not foggy | Grill (below), then come back to this step. |
 | challenge | The Outcome is clear, and any of: no problem is stated; the Smallest change is not what was asked; the ask copes with a defect or a gap somewhere else (a manual way to clean up what another part gets wrong); a premise the idea rests on is false or unverified; a count or fact you found says few people would notice | The challenge round (below). |
-| clear | The Outcome, the Problem with its case, and who it is for are stated or found, and you see no cheaper way to the Outcome | Step 3, with no challenge. |
+| clear | The Outcome, the Problem with its case, and who it is for are stated or found, and you see no cheaper way to the Outcome | Step 3, with no challenge. One outcome is one card; several become an epic or a project there. |
 
 The **kinds** of what goes on come from its delta rows (step 3), never from a guess now.
 
@@ -139,3 +139,5 @@ Dry run: write the cards, the comment and the relations you would set to one mar
 ## 8. Report
 
 One line per card: its id and link (or the dry-run file), size, kinds, the Impact count, and the gate verdict. Then the questions asked, as `n/5`, and what is left for a human: unverified premises with owners, unknown counts with owners, and any bug part to file.
+
+End with the next step for each card that has nothing open: `/pp-dev:fix <id>` when it is small (one outcome, its result decided, no new stored data, no plan needed to order the work), else `/pp-dev:write-plan <id>`. A card with open questions gets no next step until its owners answer.
